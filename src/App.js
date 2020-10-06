@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { auth, decrement, increment } from './actions';
 import './App.css';
 
 function App() {
+  const counter = useSelector(state => state.counter)
+  const login = useSelector(state => state.login)
+  const dispatch = useDispatch()
+  const btnLogin = login ? 'LOGOUT' : 'LOGIN'
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Counter {counter}</h1>
+      <button onClick={() => dispatch(decrement())} className="btn btn-danger mx-1"><i className="fa fa-minus" /></button>
+      <button onClick={() => dispatch(increment())} className="btn btn-success mx-1"><i className="fa fa-plus" /></button>
+      <p>{login ? <h3>You already Login!</h3> : <h3>You must Login!</h3>}</p>
+      <button onClick={() => dispatch(auth())} className="btn btn-primary">{btnLogin}</button>
     </div>
   );
 }
