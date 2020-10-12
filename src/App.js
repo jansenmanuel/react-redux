@@ -13,7 +13,7 @@ function App() {
       <h1>Counter {counter}</h1>
       <button onClick={() => dispatch(decrement())} className="btn btn-danger mx-1"><i className="fa fa-minus" /></button>
       <button onClick={() => dispatch(increment())} className="btn btn-success mx-1"><i className="fa fa-plus" /></button>
-      <p>{login ? <h3>You already Login!</h3> : <h3>You must Login!</h3>}</p>
+      <span>{login ? <h3>You already Login!</h3> : <h3>You must Login!</h3>}</span>
       <button onClick={() => dispatch(auth())} className="btn btn-primary">{btnLogin}</button>
     </div>
   );
